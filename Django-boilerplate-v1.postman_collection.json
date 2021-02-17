@@ -1,0 +1,307 @@
+{
+	"info": {
+		"_postman_id": "b22dc726-01f8-49ea-8edd-410e7884f43a",
+		"name": "Django-boilerpalte-v1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"SetTokenGlobal\", function () {",
+									"   pm.environment.set(\"access_token\", pm.response.json().access);",
+									"   pm.environment.set(\"refresh_token\", pm.response.json().refresh);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "irving2@yopmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Episodio1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}v1/login/",
+							"host": [
+								"{{host}}v1"
+							],
+							"path": [
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "refresh",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYxMzUyNDc3MiwianRpIjoiN2M5OGFjZDViZWIzNDNkYjg2NjlkZTY3ZWJlNDI5YjkiLCJ1c2VyX2lkIjo0fQ.uStUhIUyuEESLQ5szsD71hr5bhWSq9A_XjL6t1tpHNw",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}v1/user/refresh-token/",
+							"host": [
+								"{{host}}v1"
+							],
+							"path": [
+								"user",
+								"refresh-token",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "type",
+									"value": "1",
+									"description": "Opcional:  Click aqui\n        (1, (\"Admin\")),\n        (2, (\"Staff\")),\n        (3, (\"Client\")),",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "full_name",
+									"value": "Irving Gonzalez",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "irving4@yopmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Episodio1",
+									"type": "text"
+								},
+								{
+									"key": "confirm_password",
+									"value": "Episodio1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}v1/user/register/",
+							"host": [
+								"{{host}}v1"
+							],
+							"path": [
+								"user",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}v1/user/",
+							"host": [
+								"{{host}}v1"
+							],
+							"path": [
+								"user",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "is_active",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}v1/user/me/",
+							"host": [
+								"{{host}}v1"
+							],
+							"path": [
+								"user",
+								"me",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/home/irv205/Downloads/images.jpeg",
+									"disabled": true
+								},
+								{
+									"key": "full_name",
+									"value": "Irving Gonzalez",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "irving6@yopmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "is_active",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "Episodio2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "confirm_password",
+									"value": "Episodio2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}v1/update-user/:id/",
+							"host": [
+								"{{host}}v1"
+							],
+							"path": [
+								"update-user",
+								":id",
+								""
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
