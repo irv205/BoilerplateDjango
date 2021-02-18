@@ -14,7 +14,7 @@ def getenv(hash):
         else: val == False
 
         return val
-    except error:
+    except KeyError:
         error_msg = "Add the {} environment variable".format(hash)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -59,7 +59,8 @@ DJANGO_APPS = [
 THIRD_PARTY_APP = [
     'corsheaders',
     'django_filters',
-    'rest_framework'
+    'rest_framework',
+    'import_export',
 ]
 
 MY_APPS = [
@@ -179,6 +180,27 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#Add Logs
+#Generar un archivo logs que captura todo el trafico
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'file': {
+#             'level': 'DEBUG',
+#             'class': 'logging.FileHandler',
+#             'filename': 'debug.log',
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['file'],
+#             'level': 'DEBUG',
+#             'propagate': True,
+#         },
+#     },
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -197,8 +219,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_URL = '/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR, "media")
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 SITE_ID = 2
