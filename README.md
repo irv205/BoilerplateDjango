@@ -25,8 +25,8 @@ de un proyecto.
 
 ## Paquetes extras
 ```
-- Setuptools en caso de tener algun problema al estar instalando los requerimientos, tome en cuenta instalar
-- estos paquetes de pip.
+- Setuptools en caso de tener algun problema al estar instalando los requerimientos, 
+tome en cuenta instalar estos paquetes de pip.
 pip install setuptools
 ```
 
