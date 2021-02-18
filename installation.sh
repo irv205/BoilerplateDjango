@@ -135,14 +135,6 @@ then
     EMAIL_USER=$email_user
   fi
 
-  read -p "Email User [example@example.com]: " email_user
-  if [[($email_user=="")]];
-  then
-    EMAIL_USER="example@example.com"
-  else
-    EMAIL_USER=$email_user
-  fi
-
   read -p "Email Password [12345678]: " email_password
   if [[($email_password=="")]];
   then
