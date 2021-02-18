@@ -38,18 +38,18 @@ then
     APP_NAME=$appname
   fi
 
-  read -p "Website url [default http://localhost:5000]: " web_url
+  read -p "Website url [default http://127.0.0.1:8000]: " web_url
   if [[($web_url=="")]];
   then
-    WEBSITE_URL="http://localhost:5000"
+    WEBSITE_URL="http://127.0.0.1:8000"
   else 
     WEBSITE_URL=$web_url
   fi
   
-  read -p "Website url [default http://localhost:5000]: " server_url
+  read -p "Website url [default http://127.0.0.1:8000]: " server_url
   if [[($server_url=="")]];
   then
-    SERVER_URL="http://localhost:5000"
+    SERVER_URL="http://127.0.0.1:8000"
   else 
     SERVER_URL=$server_url
   fi
