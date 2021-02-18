@@ -74,7 +74,7 @@ $ bash installation.sh
 
 #### Sin Bash
 ```
-# Crear entorno virtual (dentro de proyecto)
+# Crear entorno virtual (dentro del proyecto)
 $ python3 -m venv venv
 
 # Activar entorno virtual
