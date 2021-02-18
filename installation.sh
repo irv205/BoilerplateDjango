@@ -161,6 +161,7 @@ then
   echo "EMAIL_USER=${EMAIL_USER}" >> "$ENVFILE"
   echo "EMAIL_PASSWORD=${EMAIL_PASSWORD}" >> "$ENVFILE"
   echo "EMAIL_PORT=587" >> "$ENVFILE"
+  echo "PAGINATION=${PAGINATION}" >> "$ENVFILE"
 fi
 
 #Entorno virtual
