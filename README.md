@@ -23,6 +23,12 @@ de un proyecto.
 - Pip
 - PosgreSQL
 
+## Paquetes extras
+```
+- Setuptools
+pip install setuptools
+```
+
 ## Estructura del proyecto
 
 ```
@@ -148,3 +154,4 @@ Django-boilerplate-v1.postman_environment.json
 * [Virtualenv](https://pypi.org/project/virtualenv/)
 * [PostgreSQL](https://www.postgresql.org/)
 * [JWT](https://medium.com/django-rest/django-rest-framework-jwt-authentication-94bee36f2af8)
+* [Environ](https://django-environ.readthedocs.io/en/latest/)
