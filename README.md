@@ -60,8 +60,8 @@ boilerplate/
 ```
 
 ## Instalacion
-> Instalar requisitos anteriores
-> Descargar o clonar 
+> Instalar requisitos anteriores,
+> Descargar o clonar el proyecto.
 
 #### Con Bash
 ```
@@ -74,7 +74,7 @@ $ bash installation.sh
 
 #### Sin Bash
 ```
-# Crear entorno virtual (dentro de myproject)
+# Crear entorno virtual (dentro de proyecto)
 $ python3 -m venv venv
 
 # Activar entorno virtual
@@ -89,6 +89,9 @@ $ nano .env
 
 # Instalar requerimientos (Con el entorno virtual activado)
 $ pip install -r requirements.txt
+
+# En caso de algun problema al instalar requerimientos tome en cuenta el siguiente comando
+$ pip install setuptools
 ```
 
 #### Comando 
@@ -101,6 +104,9 @@ $ python manage.py runserver
 
 # Ejecutar archivos estaticos
 $ python manage.py collectstatic
+
+# Crear un super usuario para accesar al panel de Django
+$ python manage.py createsuperuser
 ```
 
 ## Crear app (Modulo)
