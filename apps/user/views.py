@@ -66,7 +66,7 @@ class UserView(viewsets.ModelViewSet):
 
 class RegisterUserView(CreateAPIView):
 
-    permission_classes = ()
+    permission_classes = []
     serializer_class = serializers.UserSerializers
 
     def get_token_auth(self, user):

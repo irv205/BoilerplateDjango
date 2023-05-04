@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "b22dc726-01f8-49ea-8edd-410e7884f43a",
+		"_postman_id": "18dfb1f7-5f4c-495a-8379-1877a7569888",
 		"name": "Django-boilerpalte-v1",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22412231"
 	},
 	"item": [
 		{
@@ -32,7 +33,7 @@
 							"formdata": [
 								{
 									"key": "username",
-									"value": "irving2@yopmail.com",
+									"value": "irving4@yopmail.com",
 									"type": "text"
 								},
 								{
@@ -127,12 +128,11 @@
 							]
 						},
 						"url": {
-							"raw": "{{host}}v1/user/register/",
+							"raw": "{{host}}v1/register/",
 							"host": [
 								"{{host}}v1"
 							],
 							"path": [
-								"user",
 								"register",
 								""
 							]

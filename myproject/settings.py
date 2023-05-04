@@ -101,7 +101,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    'EXCEPTION_HANDLER': 'project.common.exception_handler.custom_exception_handler',
+    #'EXCEPTION_HANDLER': 'common.exception_handler.custom_exception_handler',
     'DEFAULT_PAGINATION_CLASS': 'common.pagination.PageNumberPagination',
     'PAGE_SIZE': getenv('PAGINATION'),
 }
@@ -215,14 +215,45 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT=os.path.join(BASE_DIR, "media")
+AWS_ENABLE = getenv("AWS_ENABLE")
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+if AWS_ENABLE:
+
+    print('use aws s3')
+
+    AWS_ACCESS_KEY_ID = getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = getenv('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = getenv('AWS_STORAGE_BUCKET_NAME')
+    AWS_CLOUD_FRONT_URL = getenv('AWS_CLOUD_FRONT_URL')
+    AWS_REGION = getenv('AWS_REGION')
+    AWS_LOCATION = 'static'
+    if AWS_CLOUD_FRONT_URL:
+        AWS_S3_CUSTOM_DOMAIN = '%s' % AWS_CLOUD_FRONT_URL
+    else:
+        AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+    # AWS_DEFAULT_ACL = 'public-read'
+    AWS_S3_ENCRYPTION = True
+
+    # Static files
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    AWS_S3_BUCKET_NAME_STATIC = getenv('AWS_STORAGE_BUCKET_NAME')
+
+    if AWS_CLOUD_FRONT_URL:
+        STATIC_URL = "https://%s/" % (AWS_CLOUD_FRONT_URL)
+    else:
+        STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_STORAGE_BUCKET_NAME)
+
+    # Media files
+    DEFAULT_FILE_STORAGE = 'project.storage_backends.MediaStorage'
+
+else: 
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT=os.path.join(BASE_DIR, "media")
 
 SITE_ID = 2
